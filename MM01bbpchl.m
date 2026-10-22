@@ -12,15 +12,13 @@ for i = 1:length(chl)
 
 bp_550_chl(i) = 0.416.*chl(i).^0.766;
 
-if chl(i) >= 0.02 && chl(i) <= 2 %
+if chl(i) >= 0 && chl(i) <= 2 %
     nu(i) = 1/2 * (log10(chl(i))-0.3);
     bbp(i,1:N) = (0.002 + 0.01*(0.50 - 0.25.*log10(chl(i))).*(lambda./550).^nu(i)) .* bp_550_chl(i);
 else
     nu(i) = 0;
     bbp(i,1:N) = (0.002 + 0.01*(0.50 - 0.25.*log10(chl(i))).*(lambda./550).^nu(i)) .* bp_550_chl(i);
-else 
-    disp('chl too low!')
-    bbp = 0;
+
 end
 
 
